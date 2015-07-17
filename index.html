@@ -15,15 +15,36 @@
 	  }
 	  
 	  input {
-	    text-align: right;
-	    width: 60px;
 	    border: none;
 	    outline: none;
 	    font-family: inherit;
 	    font-size: inherit;
+	    padding: 0;
 	  }
+	  
+	  #iva-result,
+	  #irpf-result {
+	    display: inline-block;
+	  }
+	  
+	  input,
+	  #iva-result,
+	  #irpf-result {
+  	  width: 120px;
+	    text-align: right;
+	  }
+	  
+	  #iva,
+	  #irpf {
+	    width: 30px;
+	  }
+	  
 	  ::-webkit-inner-spin-button {
 	    display: none;
+	  }
+	  
+	  .separator {
+	    border-top: 1px solid #000;
 	  }
 	</style>
 </head>
@@ -33,20 +54,25 @@
 <body>
   
 	<p>
+	  &nbsp;
 	  <input id="base" name="base" type="number" value="" placeholder=""> 
 	  <label for="base">Base imponible</label>
 	</p>
 	<p>
-	  <span id="iva-result"></span>
-	  <input id="iva" name="iva" type="number" value="21" placeholder=""> 
-	  <label for="iva">% IVA</label>
+	  +
+	  <span id="iva-result"></span> IVA&nbsp;
+	  (<input id="iva" name="iva" type="number" value="21" placeholder=""> 
+	  <label for="iva">%</label>)
 	</p>
 	<p>
-	  <span id="irpf-result"></span>
-	  <input id="irpf" name="irpf" type="number" value="19" placeholder=""> 
-	  <label for="irpf">% IRPF</label>
+	  -
+	  <span id="irpf-result"></span> IRPF 
+	  (<input id="irpf" name="irpf" type="number" value="19" placeholder=""> 
+	  <label for="irpf">%</label>)
 	</p>
+	<p class="separator"></p>
 	<p>
+	  &nbsp;
 	  <input id="total" name="total" type="number" value="" placeholder=""> 
 	  <label for="total">Total</label>
 	</p>
@@ -169,6 +195,22 @@
 	    init: function()
 	    {
 	      document.getElementById('base').focus()
+	      
+	      bean.on( document.getElementById('calculate'), 'click', es.calculate )
+	    },
+	    
+	    calculate: function( _e )
+	    {
+	      var base  = parseFloat( document.getElementById('base').value ) || 0,
+            iva   = parseFloat( document.getElementById('iva').value ) / 100,
+            irpf  = parseFloat( document.getElementById('irpf').value ) / 100,
+            total = parseFloat( document.getElementById('total').value ) || 0
+        
+        console.log( base, iva, irpf, total )
+        
+        if( base && iva && irpf && total && ( base > 0 || total > 0 ) ){
+          console.log(  )
+        }
 	    }
 	    
 	  }
