@@ -10,9 +10,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<style>
+	  body {
+	    font-family: 'Andale Mono';
+	  }
+	  
 	  input {
 	    text-align: right;
 	    width: 60px;
+	    border: none;
+	    outline: none;
+	    font-family: inherit;
+	    font-size: inherit;
 	  }
 	  ::-webkit-inner-spin-button {
 	    display: none;
@@ -25,16 +33,25 @@
 <body>
   
 	<p>
-	  <input id="iva" type="number" name="iva" value="21" placeholder=""> 
+	  <input id="base" name="base" type="number" value="" placeholder=""> 
+	  <label for="base">Base imponible</label>
+	</p>
+	<p>
+	  <span id="iva-result"></span>
+	  <input id="iva" name="iva" type="number" value="21" placeholder=""> 
 	  <label for="iva">% IVA</label>
 	</p>
 	<p>
-	  <input id="irpf" type="number" name="irpf" value="19" placeholder=""> 
+	  <span id="irpf-result"></span>
+	  <input id="irpf" name="irpf" type="number" value="19" placeholder=""> 
 	  <label for="irpf">% IRPF</label>
 	</p>
 	<p>
-	  <input id="total" type="number" name="base" value="" placeholder=""> 
+	  <input id="total" name="total" type="number" value="" placeholder=""> 
 	  <label for="total">Total</label>
+	</p>
+	<p>
+	  <button id="calculate">Calculate</button>
 	</p>
 	
 	
@@ -46,7 +63,6 @@
 	    */
 	  !function(e,t){typeof module!="undefined"?module.exports=t():typeof define=="function"&&typeof define.amd=="object"?define(t):this[e]=t()}("domready",function(){var e=[],t,n=document,r=n.documentElement.doScroll,i="DOMContentLoaded",s=(r?/^loaded|^c/:/^loaded|^i|^c/).test(n.readyState);return s||n.addEventListener(i,t=function(){n.removeEventListener(i,t),s=1;while(t=e.shift())t()}),function(t){s?t():e.push(t)}})
 	</script>
-	
 	<script id="script-bean">
 	  /*!
 	    * Bean - copyright (c) Jacob Thornton 2011-2012
