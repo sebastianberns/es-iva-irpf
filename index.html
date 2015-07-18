@@ -22,14 +22,15 @@
 	    padding: 0;
 	  }
 	  
-	  #iva-result,
-	  #irpf-result {
+	  #iva_result,
+	  #irpf_result {
 	    display: inline-block;
+	    overflow-x: hidden;
 	  }
 	  
 	  input,
-	  #iva-result,
-	  #irpf-result {
+	  #iva_result,
+	  #irpf_result {
   	  width: 120px;
 	    text-align: right;
 	  }
@@ -60,13 +61,13 @@
 	</p>
 	<p>
 	  +
-	  <span id="iva-result"></span> IVA&nbsp;
+	  <span id="iva_result"></span> IVA&nbsp;
 	  (<input id="iva" name="iva" type="number" value="21" placeholder=""> 
 	  <label for="iva">%</label>)
 	</p>
 	<p>
 	  -
-	  <span id="irpf-result"></span> IRPF 
+	  <span id="irpf_result"></span> IRPF 
 	  (<input id="irpf" name="irpf" type="number" value="19" placeholder=""> 
 	  <label for="irpf">%</label>)
 	</p>
@@ -75,9 +76,6 @@
 	  &nbsp;
 	  <input id="total" name="total" type="number" value="" placeholder=""> 
 	  <label for="total">Total</label>
-	</p>
-	<p>
-	  <button id="calculate">Calculate</button>
 	</p>
 	
 	
@@ -192,24 +190,56 @@
 	  
 	  var es = {
 	    
+	    lastchanged: undefined,
+	    
 	    init: function()
 	    {
 	      document.getElementById('base').focus()
 	      
-	      bean.on( document.getElementById('calculate'), 'click', es.calculate )
+	      var input = eina.debounce( es.calculate, 300 )
+	      bean.on( document.getElementById('base'), 'input', input )
+	      bean.on( document.getElementById('iva'), 'input', input )
+	      bean.on( document.getElementById('irpf'), 'input', input )
+	      bean.on( document.getElementById('total'), 'input', input )
 	    },
 	    
 	    calculate: function( _e )
 	    {
-	      var base  = parseFloat( document.getElementById('base').value ) || 0,
+	      var t = _e.target.id
+	      if( t === 'base' || t === 'total' )
+	        es.lastchanged = t
+	      
+	      var base  = parseFloat( document.getElementById('base').value ),
             iva   = parseFloat( document.getElementById('iva').value ) / 100,
             irpf  = parseFloat( document.getElementById('irpf').value ) / 100,
-            total = parseFloat( document.getElementById('total').value ) || 0
+            total = parseFloat( document.getElementById('total').value )
         
-        console.log( base, iva, irpf, total )
+        console.log( base, iva, irpf, total, es.lastchanged )
         
-        if( base && iva && irpf && total && ( base > 0 || total > 0 ) ){
-          console.log(  )
+        if( ( base || total ) && iva && irpf ){
+          
+          var result = 0,
+              iva_result = 0,
+              irpf_result = 0
+          
+          if( es.lastchanged === 'base' ){
+            iva_result = base * iva
+            irpf_result = base * irpf
+            result = base + iva_result - irpf_result
+            document.getElementById('total').value = result
+          }
+          else if( es.lastchanged === 'total' ){
+            result = total / ( 1 + iva - irpf )
+            iva_result = result * iva
+            irpf_result = result * irpf
+            document.getElementById('base').value = result
+          }
+          
+          document.getElementById('iva_result').innerHTML = iva_result
+          document.getElementById('irpf_result').innerHTML = irpf_result
+          
+          console.log( iva_result, irpf_result )
+          
         }
 	    }
 	    
