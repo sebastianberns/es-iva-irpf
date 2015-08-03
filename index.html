@@ -43,6 +43,7 @@
 	    font-family: inherit;
 	    font-size: inherit;
 	    padding: 0;
+      border-bottom: 1px solid transparent;
 	  }
 	  
 	  input:disabled {
@@ -61,6 +62,19 @@
 	  
 	  li {
 	    display: table-row;
+	  }
+	  
+	  li:hover,
+	  li:hover input:disabled {
+	    background-color: #f8f8f8;
+	  }
+	  
+	  li:hover input {
+	    border-bottom-color: #ccc;
+	  }
+	  
+	  li:hover input:disabled {
+	    border-bottom-color: transparent;
 	  }
 	  
 	  li p {
@@ -84,6 +98,10 @@
 	  #irpf_result {
   	  width: 160px;
 	    text-align: right;
+	  }
+	  
+	  label {
+	    cursor: pointer;
 	  }
 	  
 	  #iva,
