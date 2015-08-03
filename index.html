@@ -35,6 +35,10 @@
 	    padding: 0;
 	  }
 	  
+	  input:disabled {
+	    color: inherit;
+	  }
+	  
 	  #calculator {
 	    display: table;
 	    margin-left: auto;
@@ -94,25 +98,25 @@
     
   	<li>
   	  <p class="prefix"></p>
-  	  <p class="number"><input id="base" name="base" type="number" value="" placeholder=""></p>
+  	  <p class="number"><input id="base" name="base" type="number"></p>
   	  <p class="text"><label for="base">Base imponible</label></p>
   	</li>
   	
   	<li>
   	  <p class="prefix">+</p>
-  	  <p class="number"><span id="iva_result"></span></p>
-  	  <p class="text">IVA (<input id="iva" name="iva" type="number" value="21" placeholder=""><label for="iva"> %</label>)</p>
+  	  <p class="number"><input id="iva_result" name="iva_result" type="number" disabled></p>
+  	  <p class="text">IVA (<input id="iva" name="iva" type="number" value="21"><label for="iva"> %</label>)</p>
   	</li>
   	
   	<li>
   	  <p class="prefix">-</p>
-  	  <p class="number"><span id="irpf_result"></span></p>
-  	  <p class="text">IRPF (<input id="irpf" name="irpf" type="number" value="19" placeholder=""><label for="irpf"> %</label>)</p>
+  	  <p class="number"><input id="irpf_result" name="irpf_result" type="number" disabled></p>
+  	  <p class="text">IRPF (<input id="irpf" name="irpf" type="number" value="19"><label for="irpf"> %</label>)</p>
   	</li>
   	
   	<li class="separator">
   	  <p class="prefix"></p>
-  	  <p class="number"><input id="total" name="total" type="number" value="" placeholder=""></p>
+  	  <p class="number"><input id="total" name="total" type="number"></p>
   	  <p class="text"><label for="total">Total</label></p>
   	</li>
   	
@@ -266,21 +270,27 @@
             iva_result = base * iva
             irpf_result = base * irpf
             result = base + iva_result - irpf_result
-            document.getElementById('total').value = result
+            document.getElementById('total').value = es.format( result )
           }
           else if( es.lastchanged === 'total' ){
             result = total / ( 1 + iva - irpf )
             iva_result = result * iva
             irpf_result = result * irpf
-            document.getElementById('base').value = result
+            document.getElementById('base').value = es.format( result )
           }
           
-          document.getElementById('iva_result').innerHTML = iva_result
-          document.getElementById('irpf_result').innerHTML = irpf_result
+          document.getElementById('iva_result').value = es.format( iva_result )
+          document.getElementById('irpf_result').value = es.format( irpf_result )
           
           console.log( iva_result, irpf_result )
           
         }
+	    },
+	    
+	    format: function( _n )
+	    {
+	      var r = ( Math.round( _n * 100 ) / 100 ).toString()
+        return r
 	    }
 	    
 	  }
