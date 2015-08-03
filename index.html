@@ -35,35 +35,53 @@
 	    padding: 0;
 	  }
 	  
+	  #calculator {
+	    display: table;
+	    margin-left: auto;
+	    margin-right: auto;
+	    list-style: none;
+	    padding-left: 0;
+	    padding-top: 20vh;
+	  }
+	  
+	  li {
+	    display: table-row;
+	  }
+	  
+	  li p {
+	    display: table-cell;
+	    padding: 8px 0;
+	  }
+	  
+	  .text {
+	    padding-left: 24px;
+	  }
+	  
 	  #iva_result,
 	  #irpf_result {
 	    display: inline-block;
 	    overflow-x: hidden;
+	    vertical-align: bottom;
 	  }
 	  
 	  input,
 	  #iva_result,
 	  #irpf_result {
-  	  width: 120px;
+  	  width: 160px;
 	    text-align: right;
 	  }
 	  
 	  #iva,
 	  #irpf {
-	    width: 30px;
+	    width: 32px;
 	  }
 	  
 	  ::-webkit-inner-spin-button {
 	    display: none;
 	  }
 	  
-	  .separator {
-	    border-top: 1px solid #000;
-	  }
-	  
-	  .ls-none {
-	    list-style: none;
-	    padding-left: 0;
+	  .separator p {
+	    border-top: 2px solid #000;
 	  }
 	</style>
 </head>
@@ -72,29 +90,32 @@
 
 <body>
   
-  <ol class="ls-none">
+  <ol id="calculator">
+    
   	<li>
-  	  &nbsp;
-  	  <input id="base" name="base" type="number" value="" placeholder=""> 
-  	  <label for="base">Base imponible</label>
+  	  <p class="prefix"></p>
+  	  <p class="number"><input id="base" name="base" type="number" value="" placeholder=""></p>
+  	  <p class="text"><label for="base">Base imponible</label></p>
   	</li>
+  	
   	<li>
-  	  +
-  	  <span id="iva_result"></span> IVA&nbsp;
-  	  (<input id="iva" name="iva" type="number" value="21" placeholder=""> 
-  	  <label for="iva">%</label>)
+  	  <p class="prefix">+</p>
+  	  <p class="number"><span id="iva_result"></span></p>
+  	  <p class="text">IVA (<input id="iva" name="iva" type="number" value="21" placeholder=""><label for="iva"> %</label>)</p>
   	</li>
+  	
   	<li>
-  	  -
-  	  <span id="irpf_result"></span> IRPF 
-  	  (<input id="irpf" name="irpf" type="number" value="19" placeholder=""> 
-  	  <label for="irpf">%</label>)
+  	  <p class="prefix">-</p>
+  	  <p class="number"><span id="irpf_result"></span></p>
+  	  <p class="text">IRPF (<input id="irpf" name="irpf" type="number" value="19" placeholder=""><label for="irpf"> %</label>)</p>
   	</li>
+  	
   	<li class="separator">
-  	  &nbsp;
-  	  <input id="total" name="total" type="number" value="" placeholder=""> 
-  	  <label for="total">Total</label>
+  	  <p class="prefix"></p>
+  	  <p class="number"><input id="total" name="total" type="number" value="" placeholder=""></p>
+  	  <p class="text"><label for="total">Total</label></p>
   	</li>
+  	
   </ol>
 	
 	
