@@ -10,8 +10,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<style>
+	  @font-face{
+      font-family: 'Fira Mono';
+      src: url('f/FiraMono-Regular.eot');
+      src: local('Fira Mono'),
+           url('f/FiraMono-Regular.eot') format('embedded-opentype'),
+           url('f/FiraMono-Regular.woff2') format('woff2'),
+           url('f/FiraMono-Regular.woff') format('woff'),
+           url('f/FiraMono-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+	  }
+	  
 	  body {
-	    font-family: 'Andale Mono';
+	    font-family: 'Fira Mono', 'Andale Mono', monospace;
+	    font-size: 24px;
 	  }
 	  
 	  input {
