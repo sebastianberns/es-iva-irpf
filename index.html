@@ -229,7 +229,7 @@
         
         console.log( base, iva, irpf, total, es.lastchanged )
         
-        if( ( base || total ) && iva && irpf ){
+        if( ( base || total ) && ( iva || iva === 0 ) && ( irpf || irpf === 0 ) ){
           
           var result = 0,
               iva_result = 0,
