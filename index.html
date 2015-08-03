@@ -245,6 +245,10 @@
 	      bean.on( document.getElementById('iva'), 'input', input )
 	      bean.on( document.getElementById('irpf'), 'input', input )
 	      bean.on( document.getElementById('total'), 'input', input )
+	      
+	      var format = function( _e ){ _e.target.value = es.format( _e.target.value ) }
+	      bean.on( document.getElementById('base'), 'blur', format )
+	      bean.on( document.getElementById('total'), 'blur', format )
 	    },
 	    
 	    calculate: function( _e )
@@ -270,16 +274,12 @@
             iva_result = base * iva
             irpf_result = base * irpf
             result = base + iva_result - irpf_result
-            
-            document.getElementById('base').value = es.format( base )
             document.getElementById('total').value = es.format( result )
           }
           else if( es.lastchanged === 'total' ){
             result = total / ( 1 + iva - irpf )
             iva_result = result * iva
             irpf_result = result * irpf
-            
-            document.getElementById('total').value = es.format( total )
             document.getElementById('base').value = es.format( result )
           }
           
