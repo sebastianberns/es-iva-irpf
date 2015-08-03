@@ -54,11 +54,11 @@
 	  
 	  li p {
 	    display: table-cell;
-	    padding: 8px 0;
+	    padding: 12px 0;
 	  }
 	  
 	  .text {
-	    padding-left: 24px;
+	    padding-left: 32px;
 	  }
 	  
 	  #iva_result,
@@ -77,7 +77,7 @@
 	  
 	  #iva,
 	  #irpf {
-	    width: 32px;
+	    width: 48px;
 	  }
 	  
 	  ::-webkit-inner-spin-button {
@@ -105,13 +105,13 @@
   	<li>
   	  <p class="prefix">+</p>
   	  <p class="number"><input id="iva_result" name="iva_result" type="number" disabled></p>
-  	  <p class="text">IVA (<input id="iva" name="iva" type="number" value="21"><label for="iva"> %</label>)</p>
+  	  <p class="text"><label for="iva">IVA (</label><input id="iva" name="iva" type="number" value="21"><label for="iva"> % )</label></p>
   	</li>
   	
   	<li>
   	  <p class="prefix">-</p>
   	  <p class="number"><input id="irpf_result" name="irpf_result" type="number" disabled></p>
-  	  <p class="text">IRPF (<input id="irpf" name="irpf" type="number" value="19"><label for="irpf"> %</label>)</p>
+  	  <p class="text"><label for="irpf">IRPF (</label><input id="irpf" name="irpf" type="number" value="19"><label for="irpf"> % )</label></p>
   	</li>
   	
   	<li class="separator">
