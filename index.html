@@ -283,8 +283,6 @@
             irpf  = parseFloat( document.getElementById('irpf').value ) / 100,
             total = parseFloat( document.getElementById('total').value )
         
-        console.log( base, iva, irpf, total, es.lastchanged )
-        
         if( ( base || total ) && ( iva || iva === 0 ) && ( irpf || irpf === 0 ) ){
           
           var result = 0,
@@ -306,9 +304,6 @@
           
           document.getElementById('iva_result').value = es.format( iva_result )
           document.getElementById('irpf_result').value = es.format( irpf_result )
-          
-          console.log( iva_result, irpf_result )
-          
         }
 	    },
 	    
