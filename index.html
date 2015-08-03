@@ -60,6 +60,11 @@
 	  .separator {
 	    border-top: 1px solid #000;
 	  }
+	  
+	  .ls-none {
+	    list-style: none;
+	    padding-left: 0;
+	  }
 	</style>
 </head>
 
@@ -67,29 +72,30 @@
 
 <body>
   
-	<p>
-	  &nbsp;
-	  <input id="base" name="base" type="number" value="" placeholder=""> 
-	  <label for="base">Base imponible</label>
-	</p>
-	<p>
-	  +
-	  <span id="iva_result"></span> IVA&nbsp;
-	  (<input id="iva" name="iva" type="number" value="21" placeholder=""> 
-	  <label for="iva">%</label>)
-	</p>
-	<p>
-	  -
-	  <span id="irpf_result"></span> IRPF 
-	  (<input id="irpf" name="irpf" type="number" value="19" placeholder=""> 
-	  <label for="irpf">%</label>)
-	</p>
-	<p class="separator"></p>
-	<p>
-	  &nbsp;
-	  <input id="total" name="total" type="number" value="" placeholder=""> 
-	  <label for="total">Total</label>
-	</p>
+  <ol class="ls-none">
+  	<li>
+  	  &nbsp;
+  	  <input id="base" name="base" type="number" value="" placeholder=""> 
+  	  <label for="base">Base imponible</label>
+  	</li>
+  	<li>
+  	  +
+  	  <span id="iva_result"></span> IVA&nbsp;
+  	  (<input id="iva" name="iva" type="number" value="21" placeholder=""> 
+  	  <label for="iva">%</label>)
+  	</li>
+  	<li>
+  	  -
+  	  <span id="irpf_result"></span> IRPF 
+  	  (<input id="irpf" name="irpf" type="number" value="19" placeholder=""> 
+  	  <label for="irpf">%</label>)
+  	</li>
+  	<li class="separator">
+  	  &nbsp;
+  	  <input id="total" name="total" type="number" value="" placeholder=""> 
+  	  <label for="total">Total</label>
+  	</li>
+  </ol>
 	
 	
 	
