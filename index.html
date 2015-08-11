@@ -24,12 +24,17 @@
 	  
 	  body {
 	    font-family: 'Fira Mono', 'Andale Mono', monospace;
-	    font-size: 24px;
+	    font-size: 16px;
+	    padding-top: 16vh;
+	  }
+	  
+	  p {
+	    margin: 0;
 	  }
 	  
 	  small,
 	  .small {
-	    font-size: .5em;
+	    font-size: .75em;
 	  }
 	  
 	  a {
@@ -56,8 +61,7 @@
 	    margin-right: auto;
 	    list-style: none;
 	    padding-left: 0;
-	    padding-top: 20vh;
-	    margin-bottom: 10vh;
+	    font-size: 1.5em;
 	  }
 	  
 	  li {
@@ -120,6 +124,66 @@
 	  #credits {
 	    color: #ccc;
 	    text-align: center;
+	    margin-top: 8vh;
+	  }
+	  
+	  .instructions {
+	    position: relative;
+	    width: 409px;
+	    margin-left: auto;
+	    margin-right: auto;
+	  }
+	  
+	  .instructions p {
+	    padding: 12px;
+	    color: #fff;
+	  }
+	  
+	  .instructions-1 u {
+	    text-decoration: none;
+	    border-bottom: 2px solid;
+	  }
+	  
+	  .instructions-1 p {
+	    text-indent: -26px;
+	    padding-left: 42px;
+	    margin-right: 44px;
+	  }
+	  
+	  .instructions-2 {
+	    text-align: right;
+	  }
+	  
+	  .instructions-2 p {
+	    margin-left: 160px;
+	  }
+	  
+	  .instructions p,
+	  .arrow {
+	    background-color: #ffa3a3;
+	  }
+	  
+	  .arrow {
+	    position: absolute;
+	    width: 12px;
+	    height: 12px;
+	    transform: rotate( 45deg );
+	  }
+	  
+	  .arrow-top {
+	    top: -6px;
+	  }
+	  
+	  .arrow-bottom {
+	    bottom: -6px;
+	  }
+	  
+	  .arrow-left {
+	    left: 16px;
+	  }
+	  
+	  .arrow-right {
+	    right: 16px;
 	  }
 	</style>
 </head>
@@ -127,6 +191,12 @@
 
 
 <body>
+  
+  <div class="instructions instructions-1">
+    <p><u>A</u>&nbsp; Para calcular el importe total, introduzca la base imponible.</p>
+    <p><u>B</u>&nbsp; Para calcular la base imponible, introduzca el importe total.</p>
+    <div class="arrow arrow-bottom arrow-left"></div>
+  </div>
   
   <ol id="calculator">
     
@@ -155,6 +225,11 @@
   	</li>
   	
   </ol>
+  
+  <div class="instructions instructions-2">
+    <div class="arrow arrow-top arrow-right"></div>
+    <p>Los porcentajes de IVA <br>e IRPF son ajustables.</p>
+  </div>
   
   
   <p id="credits" class="small">
