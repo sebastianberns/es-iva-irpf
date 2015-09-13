@@ -7,7 +7,7 @@
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>ES IVA IRPF</title>
-	<meta name="viewport" content="width=430, user-scalable=no">
+	<meta id="metaviewport" name="viewport" content="width=device-width, user-scalable=no">
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<style>
 	  @font-face{
@@ -219,13 +219,13 @@
     	<li onclick="javascript:es.focus('iva')">
     	  <p class="prefix">+</p>
     	  <p class="number"><input id="iva_result" name="iva_result" type="number" disabled></p>
-    	  <p class="text"><label for="iva">IVA &nbsp;&nbsp;(</label><input id="iva" name="iva" type="number" value="21"><label for="iva"> % )</label></p>
+    	  <p class="text"><label for="iva">IVA&nbsp;&nbsp; (</label><input id="iva" name="iva" type="number" value="21"><label for="iva"> % )</label></p>
     	</li>
     	
     	<li onclick="javascript:es.focus('irpf')">
     	  <p class="prefix">-</p>
     	  <p class="number"><input id="irpf_result" name="irpf_result" type="number" disabled></p>
-    	  <p class="text"><label for="irpf">IRPF &nbsp;(</label><input id="irpf" name="irpf" type="number" value="19"><label for="irpf"> % )</label></p>
+    	  <p class="text"><label for="irpf">IRPF&nbsp; (</label><input id="irpf" name="irpf" type="number" value="19"><label for="irpf"> % )</label></p>
     	</li>
     	
     	<li class="separator" onclick="javascript:es.focus('total')">
@@ -376,6 +376,9 @@
 	      var format = function( _e ){ _e.target.value = es.format( _e.target.value ) }
 	      bean.on( document.getElementById('base'), 'blur', format )
 	      bean.on( document.getElementById('total'), 'blur', format )
+	      
+	      if( eina.vp().w < 430 )
+          document.getElementById('metaviewport').setAttribute('content', 'width=430, user-scalable=no')
 	    },
 	    
 	    calculate: function( _e )
