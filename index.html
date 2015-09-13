@@ -193,8 +193,8 @@
 <body>
   
   <div class="instructions instructions-1">
-    <p><u>A</u>&nbsp; Para calcular el importe total, introduzca la base imponible.</p>
-    <p><u>B</u>&nbsp; Para calcular la base imponible, introduzca el importe total.</p>
+    <p><u>A</u>&nbsp; <a href="javascript:es.focus('base')">Para calcular el importe total, introduzca la base imponible.</a></p>
+    <p><u>B</u>&nbsp; <a href="javascript:es.focus('total')">Para calcular la base imponible, introduzca el importe total.</a></p>
     <div class="arrow arrow-bottom arrow-left"></div>
   </div>
   
@@ -353,7 +353,7 @@
 	    
 	    init: function()
 	    {
-	      document.getElementById('base').focus()
+	      es.focus('base')
 	      
 	      var input = eina.debounce( es.calculate, 300 )
 	      bean.on( document.getElementById('base'), 'input', input )
@@ -411,6 +411,13 @@
           r = r + '0'
         
         return r
+	    },
+	    
+	    focus: function( _i )
+	    {
+	      var e = document.getElementById( _i )
+	      if( e )
+  	      e.select()
 	    }
 	    
 	  }
