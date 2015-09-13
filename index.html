@@ -7,7 +7,7 @@
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>ES IVA IRPF</title>
-	<meta name="viewport" content="width=420, user-scalable=no">
+	<meta name="viewport" content="width=430, user-scalable=no">
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<style>
 	  @font-face{
@@ -25,7 +25,7 @@
 	  body {
 	    font-family: 'Fira Mono', 'Andale Mono', monospace;
 	    font-size: 16px;
-	    padding-top: 16vh;
+	    margin: 8px;
 	  }
 	  
 	  p {
@@ -40,6 +40,12 @@
 	  a {
 	    color: inherit;
 	    text-decoration: none;
+	  }
+	  
+	  main {
+	    max-width: 414px;
+	    margin-left: auto;
+	    margin-right: auto;
 	  }
 	  
 	  input {
@@ -57,8 +63,6 @@
 	  
 	  #calculator {
 	    display: table;
-	    margin-left: auto;
-	    margin-right: auto;
 	    list-style: none;
 	    padding-left: 0;
 	    font-size: 1.5em;
@@ -129,9 +133,7 @@
 	  
 	  .instructions {
 	    position: relative;
-	    width: 404px;
-	    margin-left: auto;
-	    margin-right: auto;
+	    width: 100%;
 	  }
 	  
 	  .instructions p {
@@ -145,9 +147,9 @@
 	  }
 	  
 	  .instructions-1 p {
-	    text-indent: -26px;
-	    padding-left: 42px;
-	    margin-right: 44px;
+	    text-indent: -1.75em;
+	    padding-left: 2.625em;
+/*	    margin-right: 44px;*/
 	  }
 	  
 	  .instructions-2 {
@@ -155,7 +157,7 @@
 	  }
 	  
 	  .instructions-2 p {
-	    margin-left: 96px;
+/*	    margin-left: 96px;*/
 	  }
 	  
 	  .instructions p,
@@ -185,6 +187,12 @@
 	  .arrow-right {
 	    right: 16px;
 	  }
+	  
+	  @media ( min-width: 768px ) {
+	    body {
+	      padding-top: 16vh;
+	    }
+	  }
 	</style>
 </head>
 
@@ -192,50 +200,54 @@
 
 <body>
   
-  <div class="instructions instructions-1">
-    <p><u>A</u>&nbsp; <a href="javascript:es.focus('base')">Para calcular el importe total, introduzca la base imponible.</a></p>
-    <p><u>B</u>&nbsp; <a href="javascript:es.focus('total')">Para calcular la base imponible, introduzca el importe total.</a></p>
-    <div class="arrow arrow-bottom arrow-left"></div>
-  </div>
-  
-  <ol id="calculator">
+  <main>
     
-  	<li onclick="javascript:es.focus('base')">
-  	  <p class="prefix"></p>
-  	  <p class="number"><input id="base" name="base" type="number"></p>
-  	  <p class="text"><label for="base">Base imponible</label></p>
-  	</li>
-  	
-  	<li onclick="javascript:es.focus('iva')">
-  	  <p class="prefix">+</p>
-  	  <p class="number"><input id="iva_result" name="iva_result" type="number" disabled></p>
-  	  <p class="text"><label for="iva">IVA (</label><input id="iva" name="iva" type="number" value="21"><label for="iva"> % )</label></p>
-  	</li>
-  	
-  	<li onclick="javascript:es.focus('irpf')">
-  	  <p class="prefix">-</p>
-  	  <p class="number"><input id="irpf_result" name="irpf_result" type="number" disabled></p>
-  	  <p class="text"><label for="irpf">IRPF (</label><input id="irpf" name="irpf" type="number" value="19"><label for="irpf"> % )</label></p>
-  	</li>
-  	
-  	<li class="separator" onclick="javascript:es.focus('total')">
-  	  <p class="prefix"></p>
-  	  <p class="number"><input id="total" name="total" type="number"></p>
-  	  <p class="text"><label for="total">Total</label></p>
-  	</li>
-  	
-  </ol>
+    <div class="instructions instructions-1">
+      <p><u>A</u>&nbsp; <a href="javascript:es.focus('base')">Para calcular el importe total, introduzca la base imponible.</a></p>
+      <p><u>B</u>&nbsp; <a href="javascript:es.focus('total')">Para calcular la base imponible, introduzca el importe total.</a></p>
+      <div class="arrow arrow-bottom arrow-left"></div>
+    </div>
+    
+    <ol id="calculator">
+      
+    	<li onclick="javascript:es.focus('base')">
+    	  <p class="prefix"></p>
+    	  <p class="number"><input id="base" name="base" type="number"></p>
+    	  <p class="text"><label for="base">Base imponible</label></p>
+    	</li>
+    	
+    	<li onclick="javascript:es.focus('iva')">
+    	  <p class="prefix">+</p>
+    	  <p class="number"><input id="iva_result" name="iva_result" type="number" disabled></p>
+    	  <p class="text"><label for="iva">IVA &nbsp;&nbsp;(</label><input id="iva" name="iva" type="number" value="21"><label for="iva"> % )</label></p>
+    	</li>
+    	
+    	<li onclick="javascript:es.focus('irpf')">
+    	  <p class="prefix">-</p>
+    	  <p class="number"><input id="irpf_result" name="irpf_result" type="number" disabled></p>
+    	  <p class="text"><label for="irpf">IRPF &nbsp;(</label><input id="irpf" name="irpf" type="number" value="19"><label for="irpf"> % )</label></p>
+    	</li>
+    	
+    	<li class="separator" onclick="javascript:es.focus('total')">
+    	  <p class="prefix"></p>
+    	  <p class="number"><input id="total" name="total" type="number"></p>
+    	  <p class="text"><label for="total">Total</label></p>
+    	</li>
+    	
+    </ol>
+    
+    <div class="instructions instructions-2">
+      <div class="arrow arrow-top arrow-right"></div>
+      <p>Los porcentajes de IVA e IRPF son ajustables.</p>
+    </div>
+    
+    
+    <p id="credits" class="small">
+      <a href="https://github.com/sebastianberns/es-iva-irpf">es-iva-irpf</a>
+      by <a href="http://sebastianberns.com" target="_blank">Sebastian Berns</a>
+    </p>
   
-  <div class="instructions instructions-2">
-    <div class="arrow arrow-top arrow-right"></div>
-    <p>Los porcentajes de IVA <br>e IRPF son ajustables.</p>
-  </div>
-  
-  
-  <p id="credits" class="small">
-    <a href="https://github.com/sebastianberns/es-iva-irpf">es-iva-irpf</a>
-    by <a href="http://sebastianberns.com" target="_blank">Sebastian Berns</a>
-  </p>
+  </main>
 	
 	
 	
