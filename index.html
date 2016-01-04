@@ -131,40 +131,6 @@
 	    margin-top: 8vh;
 	  }
 	  
-	  .instructions {
-	    position: relative;
-	    width: 100%;
-	  }
-	  
-	  .instructions p {
-	    padding: 12px;
-	    color: #fff;
-	  }
-	  
-	  .instructions-1 u {
-	    text-decoration: none;
-	    border-bottom: 2px solid;
-	  }
-	  
-	  .instructions-1 p {
-	    text-indent: -1.75em;
-	    padding-left: 2.625em;
-/*	    margin-right: 44px;*/
-	  }
-	  
-	  .instructions-2 {
-	    text-align: right;
-	  }
-	  
-	  .instructions-2 p {
-/*	    margin-left: 96px;*/
-	  }
-	  
-	  .instructions p,
-	  .arrow {
-	    background-color: #ffa3a3;
-	  }
-	  
 	  .arrow {
 	    position: absolute;
 	    width: 12px;
@@ -204,12 +170,6 @@
   
   <main>
     
-    <div class="instructions instructions-1">
-      <p><u>A</u>&nbsp; <a href="javascript:es.focus('base')">Para calcular el importe total, introduzca la base imponible.</a></p>
-      <p><u>B</u>&nbsp; <a href="javascript:es.focus('total')">Para calcular la base imponible, introduzca el importe total.</a></p>
-      <div class="arrow arrow-bottom arrow-left"></div>
-    </div>
-    
     <ol id="calculator">
       
     	<li onclick="javascript:es.focus('base')">
@@ -237,11 +197,6 @@
     	</li>
     	
     </ol>
-    
-    <div class="instructions instructions-2">
-      <div class="arrow arrow-top arrow-right"></div>
-      <p>Los porcentajes de IVA e IRPF son ajustables.</p>
-    </div>
     
     
     <p id="credits" class="small">
