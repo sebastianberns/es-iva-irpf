@@ -208,50 +208,6 @@
 	    		y = w.innerHeight||e.clientHeight||b.clientHeight
 	    	return { w: x, h: y }
 	    },
-	    
-	    offset: function( _o )
-	    {
-	    	var l = t = 0
-	    	if( _o.offsetParent) {
-	    	  do {
-	    	  			l += _o.offsetLeft
-	    	  			t += _o.offsetTop
-	    	  } while (_o = _o.offsetParent)
-	    	  return { l:l, t:t }
-	    	}
-	    },
-	    
-	    throttle: function(func, wait, options)
-	    // Underscore.js
-	    {
-	      var context, args, result
-	      var timeout = null
-	      var previous = 0
-	      options || (options = {})
-	      var later = function() {
-	        previous = options.leading === false ? 0 : new Date().getTime()
-	        timeout = null
-	        result = func.apply(context, args)
-	        context = args = null
-	      }
-	      return function() {
-	        var now = new Date().getTime()
-	        if (!previous && options.leading === false) previous = now
-	        var remaining = wait - (now - previous)
-	        context = this
-	        args = arguments
-	        if (remaining <= 0 || remaining > wait) {
-	          clearTimeout(timeout)
-	          timeout = null
-	          previous = now
-	          result = func.apply(context, args)
-	          context = args = null
-	        } else if (!timeout && options.trailing !== false) {
-	          timeout = setTimeout(later, remaining)
-	        }
-	        return result
-	      }
-	    },
 	  	
 	  	debounce: function(func, wait, immediate) 
 	  	// Underscore.js
